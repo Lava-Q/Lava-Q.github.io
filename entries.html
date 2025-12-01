@@ -14,28 +14,26 @@
     
     .header-row {
       display: flex;
-      justify-content: space-between; /* pushes left and right elements apart */
-      align-items: center;            /* vertically aligns them */
+      justify-content: space-between; /* pushes them left & right */
+      align-items: center;
       width: 100%;
-      padding: 0 1em;                /* adjust spacing from page edges */
-      margin-top: 0.5em;             /* move header row down slightly */
+      padding: 0 10px;
+      box-sizing: border-box;
     }
     
     /* Main heading */
     h1 {
-      font-size: 6vw; /* scales with viewport width */
+      font-size: 6vw;
       font-weight: normal;
-      text-align: left;
-      margin: 0.055em 0.2em 0.1em 0.45em; /* changed from 0.5 */
+      margin: 0;
     }
 
     /* Horizontal line */
     .line {
-      width: 97%; /* responsive width */
-      max-width: 1700px; /* don’t exceed original width */
+      width: 100%;
       height: 2px;
-      background-color: black;
-      margin: 0.01em auto 2em auto; /* center and spacing below */
+      background: black;
+      margin-top: 10px;
     }
 
     /* Navigation / sections */
@@ -43,8 +41,8 @@
       font-size: 3.5vw;
       font-style: italic;
       margin: 0;
-      text-align: right;
     }
+
 
     /* Links */
     .link {
@@ -69,7 +67,7 @@
   </style>
 </head>
 <body>
-  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.15</p>
+  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.16</p>
   <div class="header-row">
     <h1><a href="index.html" class="link">BOOK STATISTICS</a></h1>
     <p class="section">entries</p>

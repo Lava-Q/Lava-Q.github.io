@@ -12,12 +12,13 @@
       padding: 5px;
     }
     
-    /* Header + line */
-    .header-container {
+    .header-row {
       display: flex;
-      flex-direction: column;
-      align-items: left;
-      gap: 0.05em; /* spacing between header and line */
+      justify-content: space-between; /* pushes left and right elements apart */
+      align-items: center;            /* vertically aligns them */
+      width: 100%;
+      padding: 0 1em;                /* adjust spacing from page edges */
+      margin-top: 0.5em;             /* move header row down slightly */
     }
     
     /* Main heading */
@@ -39,10 +40,10 @@
 
     /* Navigation / sections */
     .section {
-      font-size: 5vw; /* scales with viewport */
+      font-size: 3.5vw;
       font-style: italic;
+      margin: 0;
       text-align: right;
-      margin: 1px 0; /* spacing between items */
     }
 
     /* Links */
@@ -68,8 +69,8 @@
   </style>
 </head>
 <body>
-  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.14</p>
-  <div class="header-container">
+  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.15</p>
+  <div class="header-row">
     <h1><a href="index.html" class="link">BOOK STATISTICS</a></h1>
     <p class="section">entries</p>
     <div class="line"></div>

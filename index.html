@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>My GitHub Page</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"></head>
-<body>
-<style>
-	h1 {
- 	 text-align: center;
-	}
-  body {
-    margin: 0px;
-    font-family: Cardo, serif;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My GitHub Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cardo', serif;
+      text-align: center;
+      padding: 20px;
     }
-</style>
 
-<p style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 10pt; font-style: italic">v0.19</p>
+    /* Version text */
+    .version {
+      font-size: 1em; /* scales with parent */
+      font-style: italic;
+      margin-bottom: 1em;
+    }
 
-<h1 style="color: black; font-size: 80px; font-weight: normal; position: absolute; top: 90px; width: 100%; left: 50%; transform: translateX(-50%)">BOOK STATISTICS</h1>
+    /* Main heading */
+    h1 {
+      font-size: 8vw; /* scales with viewport width */
+      font-weight: normal;
+      margin: 0.5em 0 0.5em 0;
+    }
 
-<div style="background-color: black; width: 919px; height: 2px; position: absolute; top: 270px; left: 50%; transform: translateX(-50%)">
-	
-</div>
+    /* Horizontal line */
+    .line {
+      width: 60%; /* responsive width */
+      max-width: 919px; /* don’t exceed original width */
+      height: 2px;
+      background-color: black;
+      margin: 0.5em auto 2em auto; /* center and spacing below */
+    }
 
-<p style="position: absolute; top: 275px; left: 50%; transform: translateX(-50%); font-size: 35px; font-style: italic">entries</p>
+    /* Navigation / sections */
+    .section {
+      font-size: 5vw; /* scales with viewport */
+      font-style: italic;
+      margin: 2em 0; /* spacing between items */
+    }
 
-<p style="position: absolute; top: 375px; left: 50%; transform: translateX(-50%); font-size: 35px; font-style: italic">reading summary</p>
+    /* Optional: bigger screens adjustments */
+    @media (min-width: 768px) {
+      h1 { font-size: 80px; }
+      .section { font-size: 35px; }
+    }
+  </style>
+</head>
+<body>
 
-<p style="position: absolute; top: 475px; left: 50%; transform: translateX(-50%); font-size: 35px; font-style: italic">my library</p>
+<p class="version">v0.19</p>
 
-<p style="position: absolute; top: 575px; left: 50%; transform: translateX(-50%); font-size: 35px; font-style: italic">read & owned</p>
+<h1>BOOK STATISTICS</h1>
+<div class="line"></div>
 
-
+<p class="section">entries</p>
+<p class="section">reading summary</p>
+<p class="section">my library</p>
+<p class="section">read & owned</p>
 
 </body>
 </html>
-

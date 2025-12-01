@@ -36,3 +36,81 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entries – Book Statistics</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cardo', serif;
+      padding: 5px;
+    }
+    
+    /* Header + line */
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      gap: 0.05em; /* spacing between header and line */
+    }
+    
+    /* Main heading */
+    h1 {
+      font-size: 6vw; /* scales with viewport width */
+      font-weight: normal;
+      text-align: left;
+      margin: 0.055em 0.2em 0.1em 0.45em; /* changed from 0.5 */
+    }
+
+    /* Horizontal line */
+    .line {
+      width: 97%; /* responsive width */
+      max-width: 1700px; /* don’t exceed original width */
+      height: 2px;
+      background-color: black;
+      margin: 0.01em auto 2em auto; /* center and spacing below */
+    }
+
+    /* Navigation / sections */
+    .section {
+      font-size: 5vw; /* scales with viewport */
+      font-style: italic;
+      text-align: right;
+      margin: 1px 0; /* spacing between items */
+    }
+
+    /* Links */
+    .link {
+      text-decoration: none; /* remove underline */
+      color: black;          /* normal color */
+      transition: color 0.3s; /* smooth color change */
+    }
+
+    .link:hover {
+      color: #AA7562; /* color on hover */
+    }
+
+    .link:active {
+      color: #B54F2B; /* color while clicking */
+    }
+
+    /* Optional: bigger screens adjustments */
+    @media (min-width: 768px) {
+      h1 { font-size: 50px; }
+      .section { font-size: 35px; }
+    }
+  </style>
+</head>
+<body>
+  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.14</p>
+  <div class="header-container">
+    <h1><a href="index.html" class="link">BOOK STATISTICS</a></h1>
+    <p class="section">entries</p>
+    <div class="line"></div>
+  </div>
+</body>

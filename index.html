@@ -43,6 +43,21 @@
       margin: 1.5em 0; /* spacing between items */
     }
 
+        /* Links */
+    .link {
+      text-decoration: none; /* remove underline */
+      color: black;          /* normal color */
+      transition: color 0.3s; /* smooth color change */
+    }
+
+    .link:hover {
+      color: #007BFF; /* color on hover */
+    }
+
+    .link:active {
+      color: #FF0000; /* color while clicking */
+    }
+
     /* Optional: bigger screens adjustments */
     @media (min-width: 768px) {
       h1 { font-size: 70px; }
@@ -52,13 +67,12 @@
 </head>
 <body>
 
-<p class="version">v0.27</p>
+<p class="version">v0.28</p>
 
 <h1>BOOK STATISTICS</h1>
 <div class="line"></div>
 
-<p class="section">entries</p>
-<p class="section">reading summary</p>
+<p class="section"><a href="entries.html" class="link">entries</a></p><p class="section">reading summary</p>
 <p class="section">my library</p>
 <p class="section">read & owned</p>
 

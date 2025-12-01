@@ -9,7 +9,6 @@
     body {
       margin: 0;
       font-family: 'Cardo', serif;
-      text-align: center;
       padding: 20px;
     }
     
@@ -25,13 +24,14 @@
     h1 {
       font-size: 6vw; /* scales with viewport width */
       font-weight: normal;
-      margin: 0.3em 0.1em 0.5em 0; /* changed from 0.5 */
+      text-align: left;
+      margin: 0.3em 0.2em 0.5em 0; /* changed from 0.5 */
     }
 
     /* Horizontal line */
     .line {
-      width: 90%; /* responsive width */
-      max-width: 919px; /* don’t exceed original width */
+      width: 95%; /* responsive width */
+      max-width: 1200px; /* don’t exceed original width */
       height: 2px;
       background-color: black;
       margin: 0.04em auto 2em auto; /* center and spacing below */
@@ -67,7 +67,7 @@
   </style>
 </head>
 <body>
-  <p>v0.01</p>
+  <p style="position: absolute; top: 300px">v0.02</p>
   <div class="header-container">
     <h1>BOOK STATISTICS</h1>
     <div class="line"></div>

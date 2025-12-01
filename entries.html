@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       align-items: left;
-      gap: 0.3em; /* spacing between header and line */
+      gap: 0.1em; /* spacing between header and line */
     }
     
     /* Main heading */
@@ -25,13 +25,13 @@
       font-size: 6vw; /* scales with viewport width */
       font-weight: normal;
       text-align: left;
-      margin: 0.3em 0.2em 0.5em 0; /* changed from 0.5 */
+      margin: 0.1em 0.2em 0.1em 0; /* changed from 0.5 */
     }
 
     /* Horizontal line */
     .line {
       width: 95%; /* responsive width */
-      max-width: 1200px; /* don’t exceed original width */
+      max-width: 1400px; /* don’t exceed original width */
       height: 2px;
       background-color: black;
       margin: 0.01em auto 2em auto; /* center and spacing below */
@@ -67,7 +67,7 @@
   </style>
 </head>
 <body>
-  <p style="position: absolute; top: 300px">v0.03</p>
+  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.04</p>
   <div class="header-container">
     <h1>BOOK STATISTICS</h1>
     <div class="line"></div>

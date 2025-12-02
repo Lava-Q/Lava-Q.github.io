@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entries – Book Statistics</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cardo', serif;
+      padding: 20px;
+    }
+    
+    .header-row {
+      display: flex;
+      justify-content: space-between; /* pushes them left & right */
+      align-items: center;
+      width: 100%;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    
+    /* Main heading */
+    h1 {
+      font-size: 6vw;
+      font-weight: normal;
+      margin: 0;
+    }
 
+    /* Horizontal line */
+    .line {
+      width: 100%;
+      height: 2px;
+      background: black;
+      margin-top: 15px;
+    }
+
+    /* Navigation / sections */
+    .section {
+      font-size: 3.5vw;
+      font-style: italic;
+      margin: 0;
+    }
+
+
+    /* Links */
+    .link {
+      text-decoration: none; /* remove underline */
+      color: black;          /* normal color */
+      transition: color 0.3s; /* smooth color change */
+    }
+
+    .link:hover {
+      color: #AA7562; /* color on hover */
+    }
+
+    .link:active {
+      color: #B54F2B; /* color while clicking */
+    }
+
+    /* Optional: bigger screens adjustments */
+    @media (min-width: 768px) {
+      h1 { font-size: 50px; }
+      .section { font-size: 35px; }
+    }
+  </style>
+</head>
+<body>
+  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.17</p>
+  <div class="header-row">
+    <h1><a href="index.html" class="link">BOOK STATISTICS</a></h1>
+    <p class="section">entries</p>
+  </div>
+  <div class="line"></div>
+
+</body>

@@ -1,77 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entries – Book Statistics</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entries – Book Statistics</title>
+
+<!-- Tabulator table library -->
+<link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+
+<!-- Cardo font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap">
+
+<style>
     body {
-      margin: 0;
-      font-family: 'Cardo', serif;
-      padding: 20px;
+        margin: 0;
+        padding: 20px;
+        font-family: 'Cardo', serif;
     }
-    
-    .header-row {
-      display: flex;
-      justify-content: space-between; /* pushes them left & right */
-      align-items: center;
-      width: 100%;
-      padding: 0 10px;
-      box-sizing: border-box;
-    }
-    
-    /* Main heading */
+
     h1 {
-      font-size: 6vw;
-      font-weight: normal;
-      margin: 0;
+        font-size: 48px;
+        font-weight: normal;
+        margin-bottom: 10px;
     }
 
-    /* Horizontal line */
     .line {
-      width: 100%;
-      height: 2px;
-      background: black;
-      margin-top: 15px;
+        width: 100%;
+        height: 2px;
+        background: black;
+        margin-bottom: 20px;
     }
 
-    /* Navigation / sections */
-    .section {
-      font-size: 3.5vw;
-      font-style: italic;
-      margin: 0;
+    #table-container {
+        margin-top: 20px;
     }
 
-
-    /* Links */
-    .link {
-      text-decoration: none; /* remove underline */
-      color: black;          /* normal color */
-      transition: color 0.3s; /* smooth color change */
+    /* Table height on desktop */
+    #entries-table {
+        height: 75vh;
     }
 
-    .link:hover {
-      color: #AA7562; /* color on hover */
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 8vw;
+        }
+        #entries-table {
+            height: 60vh;
+        }
     }
-
-    .link:active {
-      color: #B54F2B; /* color while clicking */
-    }
-
-    /* Optional: bigger screens adjustments */
-    @media (min-width: 768px) {
-      h1 { font-size: 50px; }
-      .section { font-size: 35px; }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <p style="position: absolute; top: 700px; left: 50%; transform: translateX(-50%)">v0.17</p>
-  <div class="header-row">
-    <h1><a href="index.html" class="link">BOOK STATISTICS</a></h1>
-    <p class="section">entries</p>
-  </div>
-  <div class="line"></div>
+
+<h1><a href="index.html" style="color:black; text-decoration:none;">BOOK STATISTICS</a></h1>
+<div class="line"></div>
+
+<h2 style="font-weight: normal; margin-top: 5px;">Entries</h2>
+
+<div id="table-container">
+    <div id="entries-table"></div>
+</div>
+
+<script>
+
+// ----------------------------------------------------------
+// 1. Google Sheet configuration
+// ----------------------------------------------------------
+const SHEET_ID = "1mijwsAJp4bz-i4QRJavidx0ZeKGc7IZiVubAvPT6afs";
+const SHEET_NAME = "Books Read";
+
+// Google Sheets API (public "published to web" format)
+const url =
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+
+// ----------------------------------------------------------
+// 2. Load and parse Google Sheets data
+// ----------------------------------------------------------
+function loadSheetData() {
+    return fetch(url)
+        .then(res => res.text())
+        .then(text => {
+            // Google returns JS text, extract JSON
+            const json = JSON.parse(text.substring(47, text.length - 2));
+            const rows = json.table.rows;
+
+            // Parse rows into objects
+            let data = [];
+            rows.forEach(r => {
+                // Skip empty rows
+                if (!r.c || r.c.every(cell => cell === null)) return;
+
+                // Build row object using your exact column names
+                let obj = {
+                    "TITLE": r.c[1]?.v || "",
+                    "AUTHOR": r.c[2]?.v || "",
+                    "PAGES READ": r.c[3]?.v || "",
+                    "TOTAL PAGES": r.c[4]?.v || "",
+                    "PROGRESS": r.c[5]?.v || "",
+                    "RATING": r.c[6]?.v || "",
+                    "MONTH READ": r.c[7]?.v || "",
+                    "YEAR READ": r.c[8]?.v || "",
+                    "MAIN GENRE": r.c[9]?.v || "",
+                    "SUB-GENRE": r.c[10]?.v || "",
+                    "CLASSIC?": r.c[11]?.v || "",
+                    "INTENDED AUDIENCE": r.c[12]?.v || "",
+                    "SERIAL?": r.c[13]?.v || "",
+                    "SERIES NAME": r.c[14]?.v || "",
+                    "SERIES #": r.c[15]?.v || "",
+                    "ORIGINAL LANGUAGE": r.c[16]?.v || "",
+                    "FORMAT": r.c[17]?.v || "",
+                    "STRUCTURE": r.c[18]?.v || "",
+                    "RELEASE DATE": r.c[19]?.v || "",
+                    "AUTHOR IDENTITY": r.c[20]?.v || "",
+                    "AUTHOR NATIONALITY": r.c[21]?.v || "",
+                    "AUTHOR RACE": r.c[22]?.v || "",
+                    "AUTHOR STATUS": r.c[23]?.v || "",
+                    "AUTHOR ALIVE?": r.c[24]?.v || "",
+                    "ACQUIRED?": r.c[25]?.v || "",
+                    "DATE STARTED": r.c[26]?.v || "",
+                    "DATE FINISHED": r.c[27]?.v || "",
+                    "DAYS TO READ": r.c[28]?.v || "",
+                    "PACE": r.c[29]?.v || "",
+                    "REREAD?": r.c[30]?.v || "",
+                    "FAV?": r.c[31]?.v || "",
+                    "AUDIO LENGTH": r.c[32]?.v || "",
+                    "%": r.c[33]?.v || "",
+                    "READ COVER": r.c[34]?.v || "",
+                    "NICEST COVER": r.c[35]?.v || "",
+                    "COVER COLOUR": r.c[36]?.v || ""
+                };
+
+                data.push(obj);
+            });
+
+            return data;
+        });
+}
+
+
+// ----------------------------------------------------------
+// 3. Build the Tabulator table
+// ----------------------------------------------------------
+function buildTable(data) {
+    new Tabulator("#entries-table", {
+        data: data,
+        layout: "fitDataStretch",  // columns stretch but stay readable
+        selectable: false,
+        height: "75vh",
+        movableColumns: true,
+        pagination: true,
+        paginationSize: 50,
+
+        // Build columns from your list
+        columns: Object.keys(data[0]).map(col => ({
+            title: col,
+            field: col,
+            headerFilter: "input"
+        }))
+    });
+}
+
+
+// Load sheet → render table
+loadSheetData().then(data => buildTable(data));
+
+</script>
 
 </body>
+</html>
